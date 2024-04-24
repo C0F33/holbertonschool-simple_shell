@@ -1,4 +1,4 @@
-#include "shell.h"
+/*/#include "shell.h"
 
 void handle_builtin(char *command) {
     if (strcmp(command, "cd") == 0) {
@@ -30,3 +30,4 @@ void token_handler(char *buffer, char *delim)
         handle_builtin(token);
 
 }
+*/

@@ -9,6 +9,7 @@
 
 #define BUFFER_SIZE 1024
 #define PATH_MAX 4096
+#define MAX_ARGS 128
 
 typedef enum Bool
 {
