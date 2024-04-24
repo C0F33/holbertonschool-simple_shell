@@ -1,8 +1,8 @@
 #include "shell.h"
 
 void handle_builtin(char *command) {
-    if (strcmp(command, "cd") == 0) 
-    {
+    if (strcmp(command, "cd") == 0) {
+
         char *directory = strtok(NULL, " ");
 
         if (directory == NULL) 
@@ -11,24 +11,22 @@ void handle_builtin(char *command) {
             return;
         }
 
-        if (chdir(directory) != 0) 
-        {
+
+        if (chdir(directory) != 0) {
             perror("cd");
         }
-    } 
-    else if (strcmp(command, "exit") == 0) 
-    {
+    } else if (strcmp(command, "exit") == 0) {
+
         exit(EXIT_SUCCESS);
     }
 }
 
-void token_handler(char *buffer, char *delim)
-{
-    char *token;
-
-    token = strtok(buffer, delim);
-
-    if (token != NULL) 
-        handle_builtin(token);
-    
+void token_handler(char *buffer, char *delim) {
+    char *token = strtok(buffer, delim);
+    while (token != NULL) {
+        if (strcmp(token, "") != 0) {
+            handle_builtin(token);
+        }
+        token = strtok(NULL, delim);
+    }
 }

@@ -1,35 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include "shell.h"
 
-int main(void)
-{
-    int read;
+int main() {
     char *buffer = NULL;
     size_t size = 0;
-    char *delim = " \t";
-    
-    printf("simple_shell$ ");
+    ssize_t read;
 
-    while (1)
-	{
-		read = getline(&buffer, &size, stdin);
-		if (read == -1)
-        {
-            printf("\n");
-            break;
-		}
-        
-        if (buffer[read - 1] == '\n') 
-        {
-            buffer[read - 1] = '\0';
-        }
+    int interactive = isatty(STDIN_FILENO);
 
-        token_handler(buffer, delim);
-        process_handler(buffer);
-
+    if (interactive) {
         printf("simple_shell$ ");
     }
 
-    free(buffer);
+    while ((read = getline(&buffer, &size, stdin)) != -1) {
 
-    return (0);
+        if (buffer[read - 1] == '\n') {
+            buffer[read - 1] = '\0';
+        }
+
+        token_handler(buffer, " ");
+        process_handler(buffer);
+
+        if (interactive) {
+            printf("simple_shell$ ");
+        }
+    }
+
+    free(buffer);
+    return 0;
 }
