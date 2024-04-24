@@ -20,13 +20,12 @@ void handle_builtin(char *command) {
     }
 }
 
-void token_handler(char *buffer, char *delim)
-{
-    char *token;
-
-    token = strtok(buffer, delim);
-
-    if (token != NULL)
-        handle_builtin(token);
-
+void token_handler(char *buffer, char *delim) {
+    char *token = strtok(buffer, delim);
+    while (token != NULL) {
+        if (strcmp(token, "") != 0) {
+            handle_builtin(token);
+        }
+        token = strtok(NULL, delim);
+    }
 }
