@@ -2,8 +2,9 @@
 
 ## Description
 
-This projects is our implementation of a simple Linux shell which is the final projects of our first trimester in Holberton, San Juan, P.R. It runs already existing commands such as: ls, mkdir, pwd, etc. 
+This projects is our implementation of a simple shell which is the final projects of our first trimester in Holberton, San Juan, P.R. 
 
+A simple shell is a text-based interface for interacting with an operating system. Users input commands at a prompt, which are then parsed and executed by the shell. It supports features like command execution, I/O redirection, piping, variables, and scripting. It's a lightweight tool for efficiently managing system resources and executing tasks without a graphical interface. Ours only handles command execution.
 
 ## Complilation
 
@@ -13,15 +14,14 @@ This projects is our implementation of a simple Linux shell which is the final p
 
 The shell runs the following commads in the ```/bin``` directory
 
-    ls
-    pwd
-    mkdir
-    rm 
-    rmdir
-    cp
-    cat
-    echo
-
+- ls
+- pwd
+- mkdir
+- rm 
+- rmdir
+- cp
+- cat
+- echo
 
 # Requirements
 ## General

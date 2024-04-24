@@ -1,21 +1,23 @@
 #include "shell.h"
 
 void handle_builtin(char *command) {
-    if (strcmp(command, "cd") == 0) {
-        // Get the next token which should be the directory
+    if (strcmp(command, "cd") == 0) 
+    {
         char *directory = strtok(NULL, " ");
 
-        if (directory == NULL) {
-            fprintf(stderr, "cd: missing directory\n");
+        if (directory == NULL) 
+        {
+            fprintf(stderr, "cd: No such file or directory\n");
             return;
         }
 
-        // Change directory
-        if (chdir(directory) != 0) {
+        if (chdir(directory) != 0) 
+        {
             perror("cd");
         }
-    } else if (strcmp(command, "exit") == 0) {
-        // Exit the shell
+    } 
+    else if (strcmp(command, "exit") == 0) 
+    {
         exit(EXIT_SUCCESS);
     }
 }

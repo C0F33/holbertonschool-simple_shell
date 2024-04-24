@@ -1,14 +1,13 @@
 #include "shell.h"
 
-void main()
+int main(void)
 {
-    size_t read;
+    int read;
     char *buffer = NULL;
     size_t size = 0;
-    char *token;
-    char *delim = " ";
+    char *delim = " \t";
     
-printf("simple_shell$ ");
+    printf("simple_shell$ ");
 
     while (1)
 	{
@@ -32,4 +31,5 @@ printf("simple_shell$ ");
 
     free(buffer);
 
+    return (0);
 }
