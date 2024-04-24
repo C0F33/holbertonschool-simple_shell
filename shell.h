@@ -19,5 +19,6 @@ typedef enum Bool
 void token_handler(char *buffer, char *delim);
 void handle_builtin(char *command);
 int process_handler(char *buffer);
+void execute_command(char *full_path, char *buffer);
 
 #endif

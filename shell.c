@@ -1,26 +1,26 @@
 #include "shell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-void main()
-{
+int main() {
     size_t read;
+    long unsigned int read1 = -1;
     char *buffer = NULL;
     size_t size = 0;
-    char *token;
     char *delim = " ";
 
-printf("simple_shell$ ");
+    printf("simple_shell$ ");
 
-    while (1)
-	{
-		read = getline(&buffer, &size, stdin);
-		if (read == -1)
-        {
+    while (1) {
+        read = getline(&buffer, &size, stdin);
+        if (read == read1) {
             printf("\n");
+            free(buffer);
             break;
-		}
+        }
 
-        if (buffer[read - 1] == '\n')
-        {
+        if (buffer[read - 1] == '\n') {
             buffer[read - 1] = '\0';
         }
 
@@ -30,6 +30,5 @@ printf("simple_shell$ ");
         printf("simple_shell$ ");
     }
 
-    free(buffer);
-
+    return 0;
 }
