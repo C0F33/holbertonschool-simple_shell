@@ -2,9 +2,10 @@
 
 ## Description
 
-This projects is our implementation of a simple shell which is the final projects of our first trimester in Holberton, San Juan, P.R. 
+This projects is our implementation of a simple shell which is the final projects of our first trimester in Holberton SJU.
 
 A simple shell is a text-based interface for interacting with an operating system. Users input commands at a prompt, which are then parsed and executed by the shell. It supports features like command execution, I/O redirection, piping, variables, and scripting. It's a lightweight tool for efficiently managing system resources and executing tasks without a graphical interface. Ours only handles command execution.
+
 
 ## Complilation
 
