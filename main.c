@@ -6,20 +6,20 @@ int main(void)
 
 	while (1)
 	{
-		prompt();
+	prompt();
 	line = _getline();
 
 	if (strcmp(line, "env\n") == 0)
 	{
-		print_env();
+	print_env();
 	}
 	else if (strcmp(line, "exit\n") == 0)
 	{
-		break;
+	break;
 	}
 	else
 	{
-		/* Implement other commands */
+	/* Implement other commands */
 	}
 
 	free(line);

@@ -22,6 +22,8 @@ int process_handler(char *buffer);
 void execute_command(char *full_path, char *buffer);
 void print_env(void);
 void execute_command(char *full_path, char *buffer);
+void prompt(void);
+char *_getline(void);
 
 #endif
 

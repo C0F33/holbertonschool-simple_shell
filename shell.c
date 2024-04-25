@@ -1,33 +1,26 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "shell.h"
 
-int main() {
-    char *buffer = NULL;
-    size_t size = 0;
-    ssize_t read;
+void execute_command(char *full_path, char *buffer)
+{
+	pid_t pid = fork();
 
-    int interactive = isatty(STDIN_FILENO);
-
-    if (interactive) {
-        printf("simple_shell$ ");
-    }
-
-    while ((read = getline(&buffer, &size, stdin)) != -1) {
-
-        if (buffer[read - 1] == '\n') {
-            buffer[read - 1] = '\0';
-        }
-
-        token_handler(buffer, " ");
-        process_handler(buffer);
-
-        if (interactive) {
-            printf("simple_shell$ ");
-        }
-    }
-
-    free(buffer);
-    return 0;
+	if (pid == -1)
+	{
+		perror("fork");
+		exit(EXIT_FAILURE);
+	}
+	else if (pid == 0)
+	{
+		char *args[2];
+		args[0] = buffer;
+		args[1] = NULL;
+		execve(full_path, args, NULL);
+		perror("execve");
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+	wait(NULL);
+	}
 }
+
