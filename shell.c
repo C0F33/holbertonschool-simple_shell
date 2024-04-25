@@ -1,33 +1,49 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "shell.h"
 
-int main() {
-    char *buffer = NULL;
-    size_t size = 0;
-    ssize_t read;
+/**
+ * main - starting point of the shell where it reads the line
+ *
+ * Return: 0
+ */
 
-    int interactive = isatty(STDIN_FILENO);
+int main(void)
+{
+	char *buffer = NULL;
+	size_t size = 0;
+	ssize_t read;
+	char *delim = "  \t\n";
+	char *buff_characters;
 
-    if (interactive) {
-        printf("simple_shell$ ");
-    }
+	int interactive = isatty(STDIN_FILENO);
 
-    while ((read = getline(&buffer, &size, stdin)) != -1) {
+	if (interactive)
+	{
+		printf("simpsle_shell$ ");
+	}
 
-        if (buffer[read - 1] == '\n') {
-            buffer[read - 1] = '\0';
-        }
+	while ((read = getline(&buffer, &size, stdin)) != -1)
+	{
+		if (buffer[read - 1] == '\n')
+		{
+			buffer[read - 1] = '\0';
+		}
 
-        token_handler(buffer, " ");
-        process_handler(buffer);
+		buff_characters = buffer;
 
-        if (interactive) {
-            printf("simple_shell$ ");
-        }
-    }
+		while (*buff_characters == ' ')
+		{
+			buff_characters++;
+		}
 
-    free(buffer);
-    return 0;
+		token_handler(buff_characters, delim);
+		process_handler(buff_characters);
+
+		if (interactive)
+		{
+			printf("simple_shell$ ");
+		}
+	}
+
+	free(buffer);
+	return (0);
 }

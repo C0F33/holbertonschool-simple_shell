@@ -50,8 +50,8 @@ The shell runs the following commads in the ```/bin``` directory
 
 ## Authors
 
-Angel Bermudez @C0FF33
+Angel Bermudez [@C0FF33](https://github.com/C0F33)
 
-Vonzell Carson @Von-tech
+Vonzell Carson [@Von-tech](https://github.com/Von-tech)
 
-Sergio Lebron @SergioLebron22
+Sergio Lebron [@SergioLebron22](https://github.com/SergioLebron22)
