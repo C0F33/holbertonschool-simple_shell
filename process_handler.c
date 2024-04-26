@@ -25,6 +25,11 @@ int process_handler(char *buffer) {
         }
     }
 
+    if (strcmp(buffer, "cd") == 0) {
+	    print_env();
+	    return 0;
+    }
+
     sprintf(full_path, "%s", buffer);
 
     if (access(full_path, X_OK) == 0) {

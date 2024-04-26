@@ -37,7 +37,7 @@ int main(void)
 
 		token_handler(buff_characters, delim);
 		process_handler(buff_characters);
-
+		
 		if (interactive)
 		{
 			printf("simple_shell$ ");
