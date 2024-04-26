@@ -1,33 +1,27 @@
 #ifndef SIMPLE_SHELL_H
 #define SIMPLE_SHELL_H
-
 #include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <sys/wait.h>
+#include <stdlib.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 #include <sys/stat.h>
 
 extern char **environ;
+#define MAX_INPUT_SIZE 1024
+#define MAX_CMD_SIZE 1024
+#define DELIM " \t\r\n\a"
+#define PROMPT "simple_shell "
 
-int is_terminal_input(void);
-void print_prompt(void);
-ssize_t read_input_line(char **lineptr, size_t *n);
-void write_newline(void);
-int process_command(char *input_line, char *program_name);
-int is_exit_command(char *input_line);
-int is_env_command(char *input_line);
-int print_environment_variables(void);
-char *tokenize_command(char *input_line, int *token_count);
-int is_path_command(char *command);
-int is_relative_command(char *command);
-int is_path_unset(void);
-int execute_command_array(char *command_array[], char *program_name);
-void print_command_not_found_error(char *command, char *program_name);
-char *find_executable_path(char *command);
-void print_fork_error(char *program_name);
-void print_exec_error(char *program_name);
-int execute_command(char *command_array[], char *program_name);
+void print_env(void);
+int str_cmp(char *string1, const char *string2, int num_chars);
+char *_getenv(const char *env_var);
+int main(int argc, char *argv[]);
+int read_command(char *input, size_t __attribute__((unused)) file_stream, char *program_name);
+void print_not_found(char *cmd, char *program_name);
+int call_command(char *cmd_arr[], char *program_name);
+int execute_command(char *cmd_arr[], char *program_name);
+char *search_path(char *command);
 
 #endif /* SIMPLE_SHELL_H */
